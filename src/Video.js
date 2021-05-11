@@ -20,6 +20,9 @@ function Video({url, channel, description, song, likes, mssgs, shares}) {
     return (
         <div className='video'>
             
+            <img className='tiktok__logo' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXVXInCQ5B0ol43YM8Co51pG3PjB_tvCbMeQ&usqp=CAU'>
+            
+            </img>
             <video 
              onClick={handleVideoClick}
              ref={vidRef}

@@ -1,19 +1,38 @@
 
 import './App.css';
 import Video from './Video';
+import axios from './axios'
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [videos, setVideos] = useState([]);
+  useEffect(() => {
+    async function fetchPosts(){
+      const response = await axios.get("/v2/posts");
+      setVideos(response.data);
+
+      return response;
+    }  
+
+    fetchPosts();
+
+  },[])
+
+  console.log(videos);
   return (
     <div className="app">
       <div className='app__videos'>
-        <Video 
-        url='https://assets.mixkit.co/videos/preview/mixkit-dog-catches-a-ball-in-a-river-1494-large.mp4' 
-        channel='prisonmike' description='Just another awesome dog video' song='fireflies (Remix)' likes={110} mssgs={20} shares={12} />
-        
-        <Video 
-        url='https://images.all-free-download.com/footage_preview/mp4/beach_sunset_ocean_twilight_652.mp4' 
-        channel='prisonmike' description='Just another awesome dog video' song='fireflies (Remix)' likes={110} mssgs={20} shares={12} />
-       
+
+        {videos.map( (video) => (
+          <Video 
+          url={video.url} 
+          channel={video.channel} 
+          description={video.description} 
+          song={video.song} 
+          likes={Number(video.likes)} 
+          mssgs={Number(video.mssgs)} 
+          shares={Number(video.shares)} />
+        ))}
       </div>
 
     </div>
