@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import './Video.css'
+import VideoFooter from './VideoFooter';
 
 
 function Video() {
@@ -25,8 +26,9 @@ function Video() {
             loop
             src='https://assets.mixkit.co/videos/preview/mixkit-dog-catches-a-ball-in-a-river-1494-large.mp4'
             >
-
+            
             </video>
+            <VideoFooter />
            {/* <iframe 
            onClick={handleVideoClick}
            ref={vidRef}
