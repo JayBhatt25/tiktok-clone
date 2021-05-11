@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react'
 import './Video.css'
 import VideoFooter from './VideoFooter';
+import VideoSidebar from './VideoSidebar';
 
 
-function Video() {
+function Video({url, channel, description, song, likes, mssgs, shares}) {
     const vidRef = useRef(null);
     const [playing, setPlaying] = useState(false);
 
@@ -24,23 +25,12 @@ function Video() {
              ref={vidRef}
             className='video__player' 
             loop
-            src='https://assets.mixkit.co/videos/preview/mixkit-dog-catches-a-ball-in-a-river-1494-large.mp4'
+            src={url}
             >
             
             </video>
-            <VideoFooter />
-           {/* <iframe 
-           onClick={handleVideoClick}
-           ref={vidRef}
-           className='video__player' 
-           width="500" 
-           height="800" 
-           src="./dogvid.mp4" 
-           title="YouTube video player" 
-           frameborder="0" 
-           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" >
-
-           </iframe> */}
+            <VideoFooter channel={channel} description={description} song={song} />
+            <VideoSidebar likes={likes} mssgs={mssgs} shares={shares} />
         </div>
     )
 }
